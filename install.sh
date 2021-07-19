@@ -65,7 +65,7 @@ bhutuu
 cat <<- CONF > ${rootdir}/bin/T-fetch
 #!${rootdir}/bin/bash
 TDIR="${rootdir}/share/T-fetch"
-LAUNCHT="T-fetch""
+LAUNCHT="T-fetch"
 
 cd \${TDIR}
 bash \${LAUNCHT} \${@}
