@@ -38,16 +38,12 @@ fi
 bhutuu
 
 T_search=(find T-fetch)
-if [[ $T_search == 'T-fetch' ]]; then
+if [[ $T_search == T-fetch* ]]; then
 	${deleter} T-fetch && bhutuu
 fi
 
 cd ${rootdir}/share
-Tfile=$(find T-fetch)
-if [[ $Tfile == 'T-fetch' ]]; then
-	${deleter} T-fetch && bhutuu
-fi
-
+${deleter} T-fetch && bhutuu
 bhutuu
 #<---x--->
 
