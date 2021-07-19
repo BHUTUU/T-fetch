@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #<<<----------colour substitution by variables---------->>>
 T0="$(printf '\033[90m')"  B0="$(printf '\033[100m')" S0="$(printf '\033[30m')"
 T1="$(printf '\033[91m')"  B1="$(printf '\033[101m')" S1="$(printf '\033[31m')"
@@ -18,10 +19,18 @@ op_sys=$(uname -o)
 kern=$(uname -r)
 arch_sys=$(uname -m)
 krname=$(uname)
+
+if [[ $op_sys == 'Android' ]]; then
 dev_brand(){
 printf "`getprop ro.product.manufacturer` %s"
 printf "`getprop ro.product.model` %s"
 }
+else
+dev_brand() {
+printf "PC"
+}
+fi
+
 if [[ $distro == '/data/data/com.termux/files/home' ]]; then
 	rootdir="/data/data/com.termux/files/usr"
 	installer="apt"
