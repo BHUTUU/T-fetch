@@ -1,4 +1,5 @@
 #!/bin/bash
+args="$@"
 
 #<<<----------colour substitution by variables---------->>>
 T0="$(printf '\033[90m')"  B0="$(printf '\033[100m')" S0="$(printf '\033[30m')"
@@ -41,6 +42,9 @@ else
 	rootdir="/usr"
 	installer="sudo apt-get"
 fi
+
+#<<<----------program---------->>>
+function tfet() {
 cd ${rootdir}/bin
 pv_search=$(find pv)
 if [[ $pv_search == 'pv' ]]; then
@@ -120,4 +124,15 @@ printf "${S7}     ▒▒▒▒▒▒            ▒▒▒▒▒▒            �
 echo
 printf "${S1}THANKU${ST0}\n"
 echo
-
+}
+comand="T-fetch $args"
+if [[ $comand == 'T-fetch -u' || $comand == 'T-fetch --update' ]]; then
+cd ${rootdir}/share/T-fetch
+git pull
+elif [[ $comand == 'T-fetch ~u' || $comand == 'T-fetch ~~update' ]]; then
+cd ${rootdir}/share/T-fetch
+git pull
+bash install.sh
+else
+tfet
+fi
