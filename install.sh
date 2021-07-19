@@ -13,7 +13,7 @@ if [[ $distro == '/data/data/com.termux/files/home' ]]; then
         rootdir="/data/data/com.termux/files/usr"
         installer="apt"
 	deleter="rm -rf"
-	launcher="echo 
+	launcher="echo"
 elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
         rootdir="/data/data/hilled.pwnterm/files/usr"
         installer="apt"
@@ -40,8 +40,12 @@ bhutuu
 T_search=(find T-fetch)
 if [[ $T_search == 'T-fetch' ]]; then
 	${deleter} T-fetch && bhutuu
-	cd ${rootdir}/share
-	${deleter} T-fetch
+fi
+
+cd ${rootdir}/share
+Tfile=$(find T-fetch)
+if [[ $Tfile == 'T-fetch' ]]; then
+	${deleter} T-fetch && bhutuu
 fi
 
 bhutuu
@@ -58,7 +62,7 @@ git clone https://github.com/BHUTUU/T-fetch
 bhutuu
 
 #<<<----------installing T-fetch---------->>>
-cat <<- CONF > ${rootdir}/bin
+cat <<- CONF > ${rootdir}/bin/T-fetch
 #!${rootdir}/bin/bash
 TDIR="${rootdir}/share/T-fetch"
 LAUNCHT="T-fetch""
@@ -95,6 +99,6 @@ printf "        ${B7}${T5} Authored by Suman Kumar ~BHUTUU ${ST0}${SB0}\n" | pau
 echo
 printf "${T3}T-fetch is successfully installed to use it just run :- ${T1}T-fetch${ST0}\n" | pause; bhutuu
 echo
-printf "${T1}Thanku for installing and using T-fetch${ST0}\n" | pause;
+printf "${T1}Thanku for installing and using T-fetch${ST0}\n" | pause
 
 #Author:- Suman kumar ~BHUTUU
