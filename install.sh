@@ -71,6 +71,7 @@ cd \${TDIR}
 bash \${LAUNCHT} \${@}
 CONF
 bhutuu
+chmod u+x ${rootdir}/bin/T-fetch
 
 #<<<----------Guide for users---------->>>
 
