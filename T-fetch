@@ -1,0 +1,114 @@
+#!/bin/bash
+#<<<----------colour substitution by variables---------->>>
+T0="$(printf '\033[90m')"  B0="$(printf '\033[100m')" S0="$(printf '\033[30m')"
+T1="$(printf '\033[91m')"  B1="$(printf '\033[101m')" S1="$(printf '\033[31m')"
+T2="$(printf '\033[92m')"  B2="$(printf '\033[102m')" S2="$(printf '\033[32m')"
+T3="$(printf '\033[93m')"  B3="$(printf '\033[103m')" S3="$(printf '\033[33m')"
+T4="$(printf '\033[94m')"  B4="$(printf '\033[104m')" S4="$(printf '\033[34m')"
+T5="$(printf '\033[95m')"  B5="$(printf '\033[105m')" S5="$(printf '\033[35m')"
+T6="$(printf '\033[96m')"  B6="$(printf '\033[106m')" S6="$(printf '\033[36m')"
+T7="$(printf '\033[97m')"  B7="$(printf '\033[107m')" S7="$(printf '\033[37m')"
+ST0="$(printf '\033[00m')" SB0="$(printf '\033[0;1m')"
+
+#<<<-------------substituting system information in variables----------->>>
+PWD=$(pwd)
+cd $HOME
+distro=$(pwd)
+op_sys=$(uname -o)
+kern=$(uname -r)
+arch_sys=$(uname -m)
+krname=$(uname)
+dev_brand(){
+printf "`getprop ro.product.manufacturer` %s"
+printf "`getprop ro.product.model` %s"
+}
+if [[ $distro == '/data/data/com.termux/files/home' ]]; then
+	rootdir="/data/data/com.termux/files/usr"
+	installer="apt"
+elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
+	rootdir="/data/data/hilled.pwnterm/files/usr"
+	installer="apt"
+else
+	rootdir="/usr"
+	installer="sudo apt-get"
+fi
+cd ${rootdir}/bin
+pv_search=$(find pv)
+if [[ $pv_search == 'pv' ]]; then
+	echo
+else
+	${installer} install pv -y
+fi
+
+pause() {
+pv -qL 700
+}
+
+package() {
+dpkg -l | wc -l
+}
+
+eq() {
+  case $1 in
+  $2) ;;
+  *) return 1 ;;
+  esac
+}
+
+while read -r line; do
+eq "$line" 'MemTotal*' && set -- $line && break
+done </proc/meminfo
+
+ovrm="$(($2 / 1000))"
+memory=$(free -m | sed -n 's/^Mem:\s\+[0-9]\+\s\+\([0-9]\+\)\s.\+/\1/p')
+echo -e "${R0}"
+
+#<<<---------Banner---------->>>
+banner() {
+echo -e "
+        ${T7}___   _${ST0}
+        ${T3} |___|___|_ _|_${TS0}
+        ${T2} |   |(/_|_(_| |${TS0}
+"
+}
+
+#<<<------------RESULT---------->>>
+if [[ $distro == '/data/data/com.termux/files/home' ]]; then
+distro=TERMUX
+suman=$(printf "${B5}you are using TERMUX :)${SB1}\n")
+fi
+banner
+printf "        ${B7}${S5} Authored by Suman Kumar ~BHUTUU ${ST0}${SB0}\n" | pv -qL 50
+echo
+if [[ $distro == 'TERMUX' ]]; then
+printf "             ${B6} ${S2}${suman} ${ST0}${SB0}\n" | pv -qL 50
+echo
+fi
+# fetch
+printf "${S7}                      ▒▒▒▒▒▒▒▒▒▒\n" | pause
+printf "${S7}                  ▒▒▒▒░░      ░░▒▒▒▒\n" | pause
+printf "${S7}                ▒▒░░              ░░▒▒\n" | pause
+printf "${S7}               ▒▒░░                  ░░▒▒\n" | pause
+printf "${S7}              ▒▒                      ▒▒\n" | pause
+printf "${S7}    ▒▒      ▒▒░░              ████    ░░▒▒      ▒▒    ${T5}device${T7}  :  $(dev_brand)\n" | pause
+printf "${S7}  ▒▒░░▒▒    ▒▒░░            ████████  ░░▒▒    ▒▒░░▒▒ ${T2} !!Type ${T7} :  ${op_sys}\n" | pause
+printf "${S7}  ▒▒░░░░▒▒  ▒▒░░  ██▓▓    ██▓▓▓▓▓▓████░░▒▒  ▒▒░░░░▒▒  ${T6}package${T7} :  $(package)\n" | pause
+printf "${S7}  ▒▒░░  ░░▒▒▒▒░░  ▓▓▓▓    ██▓▓▒▒▒▒▓▓██░░▒▒░░░░  ░░▒▒  ${T4}shell${T7}   :  $(basename $SHELL)\n" | pause
+printf "${S7}    ▒▒    ░░▒▒░░            ██▓▓▓▓▓▓  ░░▒▒░░    ▒▒    ${T1}uptime${T7}  : $(uptime -p | sed 's/up//')\n" | pause
+printf "${S7}    ▒▒░░    ▒▒░░                      ░░▒▒      ▒▒    ${T3}ram${T7}     :  $memory / $ovrm MB\n" | pause
+printf "${S7}      ░░    ▒▒░░  ${S1}██${T7}              ${S1}██${T7}  ░░▒▒    ▒▒      ${S3}arch${T7}    :  ${arch_sys}\n" |  pause
+printf "${S7}      ▒▒░░░░▒▒░░    ${S1}██▓▓▒▒▓▓▒▒▓▓██${T7}    ░░▒▒░░░░▒▒      ${S2}kernal-n${T7}:  ${krname}\n" |  pause
+printf "${S7}        ▒▒░░▒▒░░      ${S1}▒▒▒▒▒▒▒▒▒▒${T7}      ░░▒▒░░░░        ${S6}kernal-v${T7}: ${kern}\n" | pause
+printf "${S7}          ▒▒░░        ${S1}▒▒░░░░░░▒▒${T7}        ░░▒▒\n" | pause
+printf "${S7}          ▒▒░░░░  ░░░░${S1}▒▒░░░░░░▒▒${T7}░░░░  ░░░░▒▒          ${B0}${T1} 😘 ${T3} 😍 ${T2} 🙈 ${T4} 🤭 ${T1} 🥳 ${T1} 😊  ${T4} 😒 ${T3} 😏 ${ST0}\n"  | pause
+printf "${S7}          ▒▒░░░░░░░░░░${S1}▒▒░░░░░░▒▒${T7}░░░░░░░░░░▒▒\n" | pause
+printf "${S7}          ▒▒░░░░░░░░░░░░${S1}▒▒▒▒▒▒${T7}░░░░░░░░░░░░▒▒\n" | pause
+printf "${S7}       ▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒\n" | pause
+printf "${S7}       ▒▒░░░░░░░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░▒▒\n" | pause
+printf "${S7}     ▒▒░░░░▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒░░░░▒▒\n" | pause
+printf "${S7}   ▓▓▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒▓▓\n" | pause
+printf "${S7}     ▒▒▒▒▒▒            ▒▒▒▒▒▒            ▒▒▒▒▒▒\n" | pause
+echo
+printf "${S1}THANKU${ST0}\n"
+echo
+
