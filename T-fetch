@@ -27,10 +27,18 @@ printf "`getprop ro.product.manufacturer` %s"
 printf "`getprop ro.product.model` %s"
 }
 else
+
 dev_brand() {
+os=$(source /etc/os-release && echo $ID)
+if [[ ${os} == 'kali' ]]; then
+diss=$(source /etc/os-release && echo $PRETTY_NAME)
+printf "$diss"
+else
 printf "PC"
+fi
 }
 fi
+
 
 if [[ $distro == '/data/data/com.termux/files/home' ]]; then
 	rootdir="/data/data/com.termux/files/usr"
