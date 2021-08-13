@@ -85,16 +85,6 @@ memory=$(free -m | sed -n 's/^Mem:\s\+[0-9]\+\s\+\([0-9]\+\)\s.\+/\1/p')
 echo -e "${R0}"
 
 #<<<------------RESULT---------->>>
-if [[ $distro == '/data/data/com.termux/files/home' ]]; then
-distro=TERMUX
-suman=$(printf "${B5}you are using TERMUX :)${SB1}\n")
-fi
-printf "        ${B7}${S5} Authored by Suman Kumar ~BHUTUU ${ST0}${SB0}\n" | pause
-echo
-if [[ $distro == 'TERMUX' ]]; then
-printf "             ${B6} ${S2}${suman} ${ST0}${SB0}\n" | pause
-echo
-fi
 # fetch
 printf "${S7}                      ▒▒▒▒▒▒▒▒▒▒\n"
 printf "${S7}                  ▒▒▒▒░░      ░░▒▒▒▒\n"
@@ -120,7 +110,8 @@ printf "${S7}     ▒▒░░░░▒▒▒▒▒▒▒▒▒▒░░░░�
 printf "${S7}   ▓▓▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒▓▓\n"
 printf "${S7}     ▒▒▒▒▒▒            ▒▒▒▒▒▒            ▒▒▒▒▒▒\n"
 echo
-printf "${S1}THANKU${ST0}\n"
+echo
+printf "${S1}THANKU from Suman kumar ~BHUTUU${ST0}\n"
 echo
 }
 comand="T-fetch $args"
