@@ -66,7 +66,7 @@ pv -qL 100
 }
 
 slip() {
-sleep 0.00
+sleep 0.02
 }
 
 package() {
