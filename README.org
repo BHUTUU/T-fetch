@@ -6,7 +6,7 @@
 :END:
 :CONTENTS:
 - [[#about][About]]
-    - [[#screenshots][Screenshots]]
+- [[#screenshots][Screenshots]]
 - [[#installation][Installation]]
 :END:
 
