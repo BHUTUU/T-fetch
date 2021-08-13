@@ -1,0 +1,23 @@
+#+TITLE: T-fetch
+
+* Table of Contents
+:PROPERTIES:
+:TOC:
+:END:
+:CONTENTS:
+- [[#about][About]]
+    - [[#screenshots][Screenshots]]
+- [[#installation][Installation]]
+:END:
+
+* About
+  A fetch written in bash
+** Screenshots
+   [[https://user-images.githubusercontent.com/85620471/126296800-333c0e8f-a920-425d-9ef2-13a98f486622.jpg]]
+
+* Installation
+  #+BEGIN_SRC shell
+    $ git clone https://github.com/BHUTUU/T-fetch
+    $ cd T-fetch
+    $ bash install.sh
+  #+END_SRC
