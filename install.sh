@@ -14,6 +14,10 @@ if [[ $distro == '/data/data/com.termux/files/home' ]]; then
         installer="apt"
 	deleter="rm -rf"
 	launcher="echo"
+if ! hash "termux-battery-status" > /dev/null 2>&1; then
+xdg-open https://play.google.com/store/apps/details?id=com.termux.api
+apt install termux-api -y
+fi
 elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
         rootdir="/data/data/hilled.pwnterm/files/usr"
         installer="apt"
