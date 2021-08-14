@@ -30,7 +30,7 @@ if [[ $PWD == *'com.termux'* ]]; then
  if ! hash "termux-battery-status" > /dev/null 2>&1; then
  pkg install termux-api -y > /dev/null 2>&1
  fi
- if ! hash "jq" 2>/dev/null; then
+ if ! hash "jq" > /dev/null 2>&1; then
  apt install jq -y
  fi
 # s1=$(termux-battery-status | grep "percentage"*)
