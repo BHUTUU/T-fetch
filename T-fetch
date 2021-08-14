@@ -38,7 +38,7 @@ if [[ $PWD == *'com.termux'* ]]; then
 # s3=$(printf "${s2/\"percentage\"/}")
 # Battery=$(printf "${T2}battery${T7}${s3}")
 s4=$(termux-battery-status | jq -r .percentage)
-Battery=$(printf "${T2}battery${T7}  : ${s4}")
+Battery=$(printf "${T5}battery${T7}  : ${s4}")
 fi
 else
 s5=$(cat /sys/class/power_supply/BAT0/capacity)
