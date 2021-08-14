@@ -27,7 +27,7 @@ printf "`getprop ro.product.manufacturer` %s"
 printf "`getprop ro.product.model` %s"
 }
 if [[ $PWD == *'com.termux'* ]]; then
- if ! hash "termux-battery-status" > /dev/null 0>&1; then
+ if ! hash "termux-battery-status" > /dev/null 2>&1; then
  pkg install termux-api -y > /dev/null 2>&1
  fi
  if ! hash "jq" 2>/dev/null; then
