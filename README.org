@@ -23,5 +23,5 @@
   #+END_SRC
 * Direct installation
   #+BEGIN_SRC shell
-    $ source <(curl -fsSL "https://git.io/JRgaH")
+    $ source <(curl -fsSL "https://git.io/JRjAE")
   #+END_SRC
