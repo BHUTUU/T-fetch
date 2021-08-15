@@ -7,7 +7,7 @@
 :CONTENTS:
 - [[#about][About]]
 - [[#screenshots][Screenshots]]
-- [[#installation][Installation]]
+- [[#installation][Installation][Direct installation]]
 :END:
 
 * About
@@ -20,4 +20,8 @@
     $ git clone https://github.com/BHUTUU/T-fetch
     $ cd T-fetch
     $ bash install.sh
+  #+END_SRC
+* Direct installation
+  #+BEGIN_SRC shell
+    $ source <(curl -fsSL "https://git.io/JRgaH")
   #+END_SRC
