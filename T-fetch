@@ -45,12 +45,12 @@ s4=$(termux-battery-status | jq -r .percentage)
 Battery=$(printf "${T5}battery${T7}  : ${s4}")
 fi
 else
-if ! hash "jq" > /dev/null 2>&1
-sudo apt install jq -y
-fi
-if ! hash "bc" > /dev/null 2>&1; then
-sudo apt install bc -y
-fi
+    if ! hash "jq" > /dev/null 2>&1; then
+    sudo apt install jq -y > /dev/null 2>&1
+    fi
+    if ! hash "bc" > /dev/null 2>&1; then
+    sudo apt install bc -y > /dev/null 2>&1
+    fi
 s5=$(cat /sys/class/power_supply/BAT0/capacity)
 Battery=$(printf "${T2}battery${T7}  : ${s5}")
 dev_brand() {
