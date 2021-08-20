@@ -18,14 +18,23 @@ if ! hash "termux-battery-status" > /dev/null 2>&1; then
 xdg-open https://play.google.com/store/apps/details?id=com.termux.api
 apt install termux-api -y
 fi
+if ! hash "bc" > /dev/null 2>&1; then
+apt install bc -y > /dev/null 2>&1
+fi
 elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
         rootdir="/data/data/hilled.pwnterm/files/usr"
         installer="apt"
 	deleter="rm -rf"
+if ! hash "bc" > /dev/null 2>&1; then
+apt install bc -y > /dev/null 2>&1
+fi
 else
         rootdir="/usr"
         installer="sudo apt-get"
 	deleter="sudo rm -rf"
+if ! hash "bc" > /dev/null 2>&1; then
+sudo apt install bc -y > /dev/null 2>&1
+fi
 fi
 
 #<<<----------check and delete old files----------->>>
