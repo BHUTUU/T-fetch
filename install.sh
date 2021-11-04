@@ -77,7 +77,7 @@ TDIR="${rootdir}/share/T-fetch"
 LAUNCHT="T-fetch"
 
 cd \${TDIR}
-bash \${LAUNCHT} \${@}
+./\${LAUNCHT} \${@}
 CONF
 bhutuu
 chmod u+x ${rootdir}/bin/T-fetch
