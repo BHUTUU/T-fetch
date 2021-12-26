@@ -1,5 +1,5 @@
 #!/bin/bash
-PWD=$(pwd)
+WPD=$(pwd)
 
 bhutuu() {
 sleep 0.125

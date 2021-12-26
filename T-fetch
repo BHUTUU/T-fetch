@@ -13,7 +13,7 @@ T7="$(printf '\033[97m')"  B7="$(printf '\033[107m')" S7="$(printf '\033[37m')"
 ST0="$(printf '\033[00m')" SB0="$(printf '\033[0;1m')"
 
 #<<<-------------substituting system information in variables----------->>>
-PWD=$(pwd)
+WPD=$(pwd)
 cd $HOME
 distro=$(pwd)
 op_sys=$(uname -o)
@@ -26,7 +26,7 @@ dev_brand(){
 printf "`getprop ro.product.manufacturer` %s"
 printf "`getprop ro.product.model` %s"
 }
-if [[ $PWD == *'com.termux'* ]]; then
+if [[ $WPD == *'com.termux'* ]]; then
  if ! hash "termux-battery-status" > /dev/null 2>&1; then
 xdg-open https://play.google.com/store/apps/details?id=com.termux.api
  pkg install termux-api -y > /dev/null 2>&1
